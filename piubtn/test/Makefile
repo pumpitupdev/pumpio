@@ -1,31 +1,40 @@
+EXEC = piubtn-test
+
+GITREV = $(shell git rev-parse HEAD)
+
 PWD = $(shell pwd)
+BIN = bin
+OBJ = $(BIN)/obj
+SRC = src
+
+SOURCES = main.c options.c
+OBJECTS = $(SOURCES:.c=.o)
+
+OBJECT_FILES=$(addprefix $(OBJ)/, $(OBJECTS)) ../lib/bin/libpiubtn.a
+
+CC = gcc
+INCDIRS = -I ../../util/src -I ../lib/src -I .
+DEFINES= -D GITREV="$(GITREV)"
+CFLAGS = -g -Wall -O3 -fpic $(INCDIRS)
+LDLIBS = -lusb-1.0
 
 default: help
 
-.PHONY: all # Build all sub-projects
-all: piuio piubtn
+.PHONY: build # Build the executable
+build: $(BIN)/$(EXEC)
 
-.PHONY: clean # Clean all build output of all sub-projects
+.PHONY: clean # Clean all build output files
 clean:
-	$(MAKE) -C $(PWD)/piuio clean
+	rm -rf $(BIN)
 
-.PHONY: piuio # Build the piuio sub-project
-piuio:
-	$(MAKE) -C $(PWD)/piuio all
+$(OBJ):
+	mkdir -p $(OBJ)
 
-.PHONY: piubtn # Build the piubtn sub-project
-pipiubtnuio:
-	$(MAKE) -C $(PWD)/piubtn all
+$(OBJ)/%.o: $(SRC)/%.c | $(OBJ)
+	$(CC) -c $(CFLAGS) $(OUTPUT_OPTION) $< 
 
-.PHONY: package # Create distribution packages (zip-files) of the sub-projects
-package:
-	$(MAKE) -C $(PWD)/piuio package
-	$(MAKE) -C $(PWD)/piubtn package
-
-.PHONY: code-format # Run clang-format over the entire code base using the provided code style in .clang-format
-code-format:
-	@echo "Applying clang-format..."
-	@find . -name '*.c' -o -name '*.h' | xargs clang-format -i -style=file
+$(BIN)/$(EXEC): $(OBJECT_FILES)
+	$(CC) -o $@ $^ $(LDLIBS)
 
 # -----------------------------------------------------------------------------
 # Utility, combo and alias targets
@@ -39,7 +48,7 @@ code-format:
 
 .PHONY: help # Default target, print help screen
 help:
-	@echo pumpio utility library project makefile.
+	@echo piubtn-test application project makefile.
 	@echo
 	@echo "Targets:"
 	@grep '^.PHONY: .* #' Makefile | gawk 'match($$0, /\.PHONY: (.*) # (.*)/, a) { printf("  \033[0;32m%-25s \033[0;0m%s\n", a[1], a[2]) }'

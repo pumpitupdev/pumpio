@@ -3,7 +3,8 @@
 This repository provides tooling to interface with various types of I/O
 hardware used on the Pump It Up game series.
 
-* [PIUIO](piuio/README.md)
+* [PIUIO](piuio/README.md): USB PIUIO/MK6 I/O introduced with MK6 hardware and Exceed 2
+* [PIUBTN](piubtn/README.md): Additional menu buttons introduced with Pump It Up Pro
 
 ## Building
 
