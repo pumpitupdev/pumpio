@@ -16,7 +16,7 @@
  *
  * @return True if device is connected, false otherwise.
  */
-bool pumpio_piuio_usb_available();
+bool piuio_usb_available();
 
 /**
  * Open a connected PIUIO device using a user space usb library.
@@ -24,19 +24,19 @@ bool pumpio_piuio_usb_available();
  * @param handle Pointer to variable (void*) to store the resulting handle
  *               reference in if the call is successful. The caller is
  *               responsible for managing the handle and free it using
- *               pumpio_piuio_usb_close.
+ *               piuio_usb_close.
  * @return Success or an error code as defined by result_t. Possible return
  *         values: RESULT_SUCCESS, EIO, EINVAL, EACCES, ENODEV, ENOENT, EBUSY,
  *         EAGAIN, EOVERFLOW, EPIPE, EINTR, ENOMEM, ENOTSUP
  */
-result_t pumpio_piuio_usb_open(void **handle);
+result_t piuio_usb_open(void **handle);
 
 /**
  * Run a single set output, get input poll cycle.
  * 
  * This results in querying only a single selected sensor out of all four
  * sensors. In order to get data from all four sensors, either cycle the bit
- * mask in the output paket or use pumpio_piuio_usb_poll_full_cycle for
+ * mask in the output paket or use piuio_usb_poll_full_cycle for
  * convenience.
  * 
  * @param handle Valid handle of an opened PIUIO usb device
@@ -46,7 +46,7 @@ result_t pumpio_piuio_usb_open(void **handle);
  *         values: RESULT_SUCCESS, EIO, EINVAL, EACCES, ENODEV, ENOENT, EBUSY,
  *         EAGAIN, EOVERFLOW, EPIPE, EINTR, ENOMEM, ENOTSUP
  */
-result_t pumpio_piuio_usb_poll_one_cycle(
+result_t piuio_usb_poll_one_cycle(
     void *handle,
     const union piuio_output_paket *output,
     union piuio_input_paket *input);
@@ -68,7 +68,7 @@ result_t pumpio_piuio_usb_poll_one_cycle(
  *         values: RESULT_SUCCESS, EIO, EINVAL, EACCES, ENODEV, ENOENT, EBUSY,
  *         EAGAIN, EOVERFLOW, EPIPE, EINTR, ENOMEM, ENOTSUP
  */
-result_t pumpio_piuio_usb_poll_full_cycle(
+result_t piuio_usb_poll_full_cycle(
     void *handle,
     union piuio_output_paket *output,
     struct piuio_usb_input_batch_paket *input);
@@ -80,6 +80,6 @@ result_t pumpio_piuio_usb_poll_full_cycle(
  *
  * @param handle Valid handle of the opened PIUIO device to close
  */
-void pumpio_piuio_usb_close(void *handle);
+void piuio_usb_close(void *handle);
 
 #endif

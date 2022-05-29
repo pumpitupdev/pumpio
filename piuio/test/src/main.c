@@ -900,7 +900,7 @@ static void proc_usb(int32_t delay_ms, func_render_data_t render)
   memset(output.raw, 0, sizeof(output.raw));
   memset(&input, 0, sizeof(struct piuio_usb_input_batch_paket));
 
-  result = pumpio_piuio_usb_open(&handle);
+  result = piuio_usb_open(&handle);
 
   if (result) {
     errno = result;
@@ -913,7 +913,7 @@ static void proc_usb(int32_t delay_ms, func_render_data_t render)
   while (loop) {
     clock_gettime(CLOCK_MONOTONIC, &tstart);
 
-    result = pumpio_piuio_usb_poll_full_cycle(handle, &output, &input);
+    result = piuio_usb_poll_full_cycle(handle, &output, &input);
 
     clock_gettime(CLOCK_MONOTONIC, &tend);
 
@@ -931,7 +931,7 @@ static void proc_usb(int32_t delay_ms, func_render_data_t render)
     sleep_ms(delay_ms);
   }
 
-  pumpio_piuio_usb_close(handle);
+  piuio_usb_close(handle);
 }
 
 static void proc_kmod(int32_t delay_ms, func_render_data_t render)
