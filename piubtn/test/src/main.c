@@ -129,7 +129,7 @@ static void draw_tui(
       input->btn_p1_back,
       input->btn_p2_back,
       output->btn_light_p1_back,
-      output->btn_light_p1_back,
+      output->btn_light_p2_back,
       input->btn_p1_left,
       output->btn_light_p1_left,
       output->btn_light_p1_right,
