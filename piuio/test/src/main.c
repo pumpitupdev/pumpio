@@ -38,6 +38,18 @@ static void handle_pad_lights_on_input_piu(
     struct piuio_piu_output_paket *output,
     const struct piuio_piu_input_paket *inputs)
 {
+  output->pad_light_p1_lu = 0;
+  output->pad_light_p1_ru = 0;
+  output->pad_light_p1_cn = 0;
+  output->pad_light_p1_ld = 0;
+  output->pad_light_p1_rd = 0;
+
+  output->pad_light_p2_lu = 0;
+  output->pad_light_p2_ru = 0;
+  output->pad_light_p2_cn = 0;
+  output->pad_light_p2_ld = 0;
+  output->pad_light_p2_rd = 0;
+
   for (uint8_t i = 0; i < PIUIO_SENSOR_MASK_TOTAL_COUNT; i++) {
     output->pad_light_p1_lu |= inputs[i].sensor_p1_lu;
     output->pad_light_p1_ru |= inputs[i].sensor_p1_ru;
@@ -57,6 +69,16 @@ static void handle_pad_lights_on_input_itg(
     struct piuio_itg_output_paket *output,
     const struct piuio_itg_input_paket *inputs)
 {
+  output->pad_light_p1_up = 0;
+  output->pad_light_p1_down = 0;
+  output->pad_light_p1_left = 0;
+  output->pad_light_p1_right = 0;
+
+  output->pad_light_p2_up = 0;
+  output->pad_light_p2_down = 0;
+  output->pad_light_p2_left = 0;
+  output->pad_light_p2_right = 0;
+
   for (uint8_t i = 0; i < PIUIO_SENSOR_MASK_TOTAL_COUNT; i++) {
     output->pad_light_p1_up |= inputs[i].sensor_p1_up;
     output->pad_light_p1_down |= inputs[i].sensor_p1_down;
@@ -414,8 +436,6 @@ static void draw_itg_tui(
       inputs[PIUIO_SENSOR_MASK_RIGHT].sensor_p2_down,
       inputs[PIUIO_SENSOR_MASK_DOWN].sensor_p1_down,
       inputs[PIUIO_SENSOR_MASK_DOWN].sensor_p2_down);
-
-  handle_pad_lights_on_input_itg(output, inputs);
 }
 
 static void draw_piu_tui(
@@ -546,8 +566,6 @@ static void draw_piu_tui(
       inputs[PIUIO_SENSOR_MASK_DOWN].sensor_p1_rd,
       inputs[PIUIO_SENSOR_MASK_DOWN].sensor_p2_ld,
       inputs[PIUIO_SENSOR_MASK_DOWN].sensor_p2_rd);
-
-  handle_pad_lights_on_input_piu(output, inputs);
 }
 
 // -----------------------------------------------------------------------------------------
@@ -813,8 +831,6 @@ static bool render_tui_piu(
   assert(output != NULL);
   assert(input != NULL);
 
-  handle_pad_lights_on_input_piu(&output->piu, &input->pakets->piu);
-
   if (interrupted) {
     if (draw_menu_piu_tui(&output->piu)) {
       interrupted = false;
@@ -828,6 +844,8 @@ static bool render_tui_piu(
       (struct piuio_piu_input_paket *) input->pakets,
       io_time_sec);
 
+  handle_pad_lights_on_input_piu(&output->piu, &input->pakets->piu);
+
   return true;
 }
 
@@ -838,8 +856,6 @@ static bool render_tui_itg(
 {
   assert(output != NULL);
   assert(input != NULL);
-
-  handle_pad_lights_on_input_itg(&output->itg, &input->pakets->itg);
 
   if (interrupted) {
     if (draw_menu_itg_tui(&output->itg)) {
@@ -853,6 +869,8 @@ static bool render_tui_itg(
       &output->itg,
       (struct piuio_itg_input_paket *) input->pakets,
       io_time_sec);
+
+  handle_pad_lights_on_input_itg(&output->itg, &input->pakets->itg);
 
   return true;
 }
