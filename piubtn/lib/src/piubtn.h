@@ -17,14 +17,14 @@
  */
 struct __attribute__((__packed__)) piubtn_piu_output_paket {
   /* Byte 0 */
-  uint8_t btn_light_p1_start : 1;
-  uint8_t btn_light_p1_right : 1;
-  uint8_t btn_light_p1_left : 1;
-  uint8_t btn_light_p1_back : 1;
   uint8_t btn_light_p2_start : 1;
   uint8_t btn_light_p2_right : 1;
   uint8_t btn_light_p2_left : 1;
   uint8_t btn_light_p2_back : 1;
+  uint8_t btn_light_p1_start : 1;
+  uint8_t btn_light_p1_right : 1;
+  uint8_t btn_light_p1_left : 1;
+  uint8_t btn_light_p1_back : 1;
 
   /* Byte 1 */
   uint8_t unused_1;
