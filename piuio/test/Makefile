@@ -15,7 +15,7 @@ OBJECT_FILES=$(addprefix $(OBJ)/, $(OBJECTS)) ../lib/bin/libpiuio.a
 CC = gcc
 INCDIRS = -I ../../util/src -I ../lib/src -I .
 DEFINES= -D GITREV="$(GITREV)"
-CFLAGS = -g -Wall -Werror -O3 -fpic $(INCDIRS)
+CFLAGS = -g -Wall -O3 -fpic $(INCDIRS)
 LDLIBS = -lusb-1.0
 
 default: help
