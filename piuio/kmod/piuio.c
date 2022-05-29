@@ -1,7 +1,7 @@
 /*
  * Based on version 0.1 of djpohly's piuio kernel module:
  * https://github.com/djpohly/piuio
- * 
+ *
  * PIUIO interface driver
  *
  * Copyright (C) 2012-2014 Devin J. Pohly (djpohly+linux@gmail.com)

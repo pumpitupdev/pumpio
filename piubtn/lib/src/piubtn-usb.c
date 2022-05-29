@@ -25,7 +25,11 @@ result_t piubtn_usb_open(void **handle)
   assert(handle != NULL);
 
   return pumpio_usb_open(
-      handle, PIUBTN_USB_VID, PIUBTN_USB_PID, PIUBTN_USB_CONFIG, PIUBTN_USB_IFACE);
+      handle,
+      PIUBTN_USB_VID,
+      PIUBTN_USB_PID,
+      PIUBTN_USB_CONFIG,
+      PIUBTN_USB_IFACE);
 }
 
 result_t piubtn_usb_poll(

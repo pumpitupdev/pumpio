@@ -15,7 +15,7 @@
 
 /**
  * Sensor mask bits to select the sensor to be queried on the next input poll.
- * 
+ *
  * Bits: 00 right, 01 left, 10 down, 11 up
  */
 enum piuio_sensor_mask {
@@ -236,7 +236,7 @@ union piuio_input_paket {
 
 /**
  * A batch of four input pakets.
- * 
+ *
  * As each panel of the stage has four sensors and one input paket can only
  * contain data for a single sensor, we need to issue four queries to the I/O
  * to get data for all sensors creating one complete input update cycle.

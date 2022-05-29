@@ -37,15 +37,15 @@ static void handle_button_lights_on_input(
     struct piubtn_piu_output_paket *output,
     const struct piubtn_piu_input_paket *input)
 {
-    output->btn_light_p1_start = input->btn_p1_start;
-    output->btn_light_p1_right = input->btn_p1_right;
-    output->btn_light_p1_left = input->btn_p1_left;
-    output->btn_light_p1_back = input->btn_p1_back;
+  output->btn_light_p1_start = input->btn_p1_start;
+  output->btn_light_p1_right = input->btn_p1_right;
+  output->btn_light_p1_left = input->btn_p1_left;
+  output->btn_light_p1_back = input->btn_p1_back;
 
-    output->btn_light_p2_start = input->btn_p2_start;
-    output->btn_light_p2_right = input->btn_p2_right;
-    output->btn_light_p2_left = input->btn_p2_left;
-    output->btn_light_p2_back = input->btn_p2_back;
+  output->btn_light_p2_start = input->btn_p2_start;
+  output->btn_light_p2_right = input->btn_p2_right;
+  output->btn_light_p2_left = input->btn_p2_left;
+  output->btn_light_p2_back = input->btn_p2_back;
 }
 
 static bool draw_menu_tui(struct piubtn_piu_output_paket *output)
@@ -74,28 +74,28 @@ static bool draw_menu_tui(struct piubtn_piu_output_paket *output)
       return false;
 
     case 2:
-        output->btn_light_p1_start = 1;
-        output->btn_light_p1_right = 1;
-        output->btn_light_p1_left = 1;
-        output->btn_light_p1_back = 1;
+      output->btn_light_p1_start = 1;
+      output->btn_light_p1_right = 1;
+      output->btn_light_p1_left = 1;
+      output->btn_light_p1_back = 1;
 
-        output->btn_light_p2_start = 1;
-        output->btn_light_p2_right = 1;
-        output->btn_light_p2_left = 1;
-        output->btn_light_p2_back = 1;
+      output->btn_light_p2_start = 1;
+      output->btn_light_p2_right = 1;
+      output->btn_light_p2_left = 1;
+      output->btn_light_p2_back = 1;
 
       break;
 
     case 3:
-        output->btn_light_p1_start = 0;
-        output->btn_light_p1_right = 0;
-        output->btn_light_p1_left = 0;
-        output->btn_light_p1_back = 0;
+      output->btn_light_p1_start = 0;
+      output->btn_light_p1_right = 0;
+      output->btn_light_p1_left = 0;
+      output->btn_light_p1_back = 0;
 
-        output->btn_light_p2_start = 0;
-        output->btn_light_p2_right = 0;
-        output->btn_light_p2_left = 0;
-        output->btn_light_p2_back = 0;
+      output->btn_light_p2_start = 0;
+      output->btn_light_p2_right = 0;
+      output->btn_light_p2_left = 0;
+      output->btn_light_p2_back = 0;
 
       break;
   }
@@ -117,15 +117,15 @@ static void draw_tui(
   printf("Press CTRL + C to open menu\n");
   printf("%d - I/O time: %.5f secs\n", counter++, io_time_sec);
   printf(
-    "+--------------------+\n"
-    "|    %d          %d    |\n"
-    "|  +---+      +---+  |\n"
-    "|  | %d |      | %d |  |\n"
-    "| %d|%d+%d|%d    %d|%d+%d|%d |\n"
-    "|  | %d |      | %d |  |\n"
-    "|  +---+      +---+  |\n"
-    "|    %d          %d    |\n"
-    "+--------------------+\n",
+      "+--------------------+\n"
+      "|    %d          %d    |\n"
+      "|  +---+      +---+  |\n"
+      "|  | %d |      | %d |  |\n"
+      "| %d|%d+%d|%d    %d|%d+%d|%d |\n"
+      "|  | %d |      | %d |  |\n"
+      "|  +---+      +---+  |\n"
+      "|    %d          %d    |\n"
+      "+--------------------+\n",
       input->btn_p1_back,
       input->btn_p2_back,
       output->btn_light_p1_back,
@@ -192,14 +192,14 @@ static bool render_text(
       "p2_start: %d\n",
       counter++,
       io_time_sec,
-     input->piu.btn_p1_back,
-     input->piu.btn_p1_left,
-     input->piu.btn_p1_right,
-     input->piu.btn_p1_start,
-     input->piu.btn_p2_back,
-     input->piu.btn_p2_left,
-     input->piu.btn_p2_right,
-     input->piu.btn_p2_start);
+      input->piu.btn_p1_back,
+      input->piu.btn_p1_left,
+      input->piu.btn_p1_right,
+      input->piu.btn_p1_start,
+      input->piu.btn_p2_back,
+      input->piu.btn_p2_left,
+      input->piu.btn_p2_right,
+      input->piu.btn_p2_start);
 
   handle_button_lights_on_input(&output->piu, &input->piu);
 
@@ -222,7 +222,7 @@ static bool render_tui(
     }
   }
 
-  draw_tui(&output->piu,&input->piu,io_time_sec);
+  draw_tui(&output->piu, &input->piu, io_time_sec);
 
   handle_button_lights_on_input(&output->piu, &input->piu);
 

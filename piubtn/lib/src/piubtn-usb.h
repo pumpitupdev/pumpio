@@ -20,7 +20,7 @@ bool piubtn_usb_available();
 
 /**
  * Open a connected PIUBTN device using a user space usb library.
- * 
+ *
  * @param handle Pointer to variable (void*) to store the resulting handle
  *               reference in if the call is successful. The caller is
  *               responsible for managing the handle and free it using
@@ -33,7 +33,7 @@ result_t piubtn_usb_open(void **handle);
 
 /**
  * Run a one synchronous polling call setting outputs and getting inputs.
- * 
+ *
  * @param handle Valid handle of an opened PIUBTN usb device
  * @param output Pointer to an allocated buffer with the output data to send.
  * @param input Pointer to an allocated buffer for the input data to receive.
@@ -48,7 +48,7 @@ result_t piubtn_usb_poll(
 
 /**
  * Close an opened PIUBTN usb device.
- * 
+ *
  * Ensure you call this for every PIUBTN device opened to free resources.
  *
  * @param handle Valid handle of the opened PIUBTN device to close

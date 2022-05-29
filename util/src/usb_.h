@@ -71,7 +71,7 @@ result_t pumpio_usb_control_transfer(
 
 /**
  * Close an opened usb device.
- * 
+ *
  * Ensure you call this for every device opened to free resources.
  *
  * @param handle Valid handle of the opened device to close

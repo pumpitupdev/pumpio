@@ -113,5 +113,4 @@ static_assert(
     sizeof(union piubtn_input_paket) == PIUBTN_INPUT_PAKET_SIZE,
     "Expected size of piubtn_input_paket incorrect");
 
-
 #endif
