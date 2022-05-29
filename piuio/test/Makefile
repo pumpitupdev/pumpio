@@ -34,7 +34,7 @@ $(OBJ)/%.o: $(SRC)/%.c | $(OBJ)
 	$(CC) -c $(CFLAGS) $(OUTPUT_OPTION) $< 
 
 $(BIN)/$(EXEC): $(OBJECT_FILES)
-	$(CC) $(LDLIBS) -o $@ $^
+	$(CC) -o $@ $^ $(LDLIBS)
 
 # -----------------------------------------------------------------------------
 # Utility, combo and alias targets

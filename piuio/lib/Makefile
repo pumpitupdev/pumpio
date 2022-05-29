@@ -2,7 +2,7 @@ LIB_STATIC = libpiuio.a
 LIB_DYNAMIC = libpiuio.so
 
 GITREV = $(shell git rev-parse HEAD)
-VERSION = "0.0.1"
+VERSION = "0.1.0"
 
 PWD = $(shell pwd)
 BIN = bin
@@ -18,7 +18,7 @@ CC = gcc
 AR = ar
 INCDIRS = -I ../../util/src -I .
 DEFINES= -D PIUIO_GITREV="$(GITREV)" -D PIUIO_VERSION="$(VERSION)"
-CFLAGS = -g -Wall -Werror -O3 -fpic $(INCDIRS)
+CFLAGS = -g -Wall -O3 -fpic $(INCDIRS)
 ARFLAGS = rcsT
 LDLIBS = -lusb-1.0
 
