@@ -33,8 +33,6 @@ package: all $(BIN) $(BIN)/piuio.zip
 $(BIN):
 	mkdir -p $(BIN)
 
-# TODO ship piuio ko as source package with makefile to build on target machine?
-#	kmod/bin/piuio.ko
 $(BIN)/piuio.zip: \
     kmod/piuio.ko \
     lib/bin/libpiuio.a \
